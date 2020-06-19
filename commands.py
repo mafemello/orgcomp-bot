@@ -3,23 +3,37 @@ class Commands(Users):
     def __init__(self, bot):
         self.bot = bot
         self.COMANDOS = {
-        '/start': self.start_user,
-        '/help': self.get_help,
-        '/teoria': self.get_teoria_help,
-        '/quizz': self.get_quizz_help
+            '/start': {
+                'method': self.start_user,
+                'description': 'Inicia o bot e Comandos Disponíveis'
+            },
+            '/help': {
+                'method': self.get_help,
+                'description': 'Comandos Disponíveis'
+            },
+            '/teoria': { 
+                'method': self.get_teoria_help,
+                'description': 'Aprenda a teoria!'
+            },
+            '/quizz': {
+                'method': self.get_quizz_help,
+                'description': 'Teste seus conhecimentos!'
+            },
+            '/gustavinho': {
+                'method': self.send_gustavinho,
+                'description': 'Manda foto do gustavinho'
+            }
         }
         Users.__init__(self)
 
         self.playlist = ('https://www.youtube.com/watch?v=HgA-oXOV7kI&list=PLxI8Can9yAHdG-xUDj6i-HGB7IAsAU-t1')
 
     def get_help(self,user_id):
-        help_msg = '''
-        Bem vindo ao @orgcomp_bot \n Comandos Disponíveis: 
-        /help : Menu de comandos
-        /teoria: Estude a teoria de Orgcomp
-        /quizz: Teste seus conhecimentos
-        '''
-        self.bot.sendMessage(user_id, help_msg)
+        msg = '------------- \n*Comandos Disponíveis:* \n'
+        for comando in self.COMANDOS:
+            msg  += f'{comando}: {self.COMANDOS[comando]["description"]}\n'
+        msg += '------------- \n'
+        self.bot.sendMessage(user_id,msg, parse_mode= 'Markdown')
 
     def start_user(self, user_id):
         was_user_created = self.create_user(user_id)
@@ -43,5 +57,8 @@ class Commands(Users):
         '''
         self.bot.sendMessage(user_id, quizz_help_msg)
 
+    def send_gustavinho(self, user_id):
+        gustavinho = 'https://avatars0.githubusercontent.com/u/37300626?s=64&v=4'
+        self.bot.sendPhoto(user_id,gustavinho)
 
     
