@@ -1,12 +1,14 @@
 from users import Users
 from commands import Commands
+from teorias import Teorias
 import telepot
 
-class Bot(Commands, Users):
+class Bot(Commands, Users, Teorias):
     def __init__(self, bot_key):
         self.BOT = telepot.Bot(bot_key)
         Users.__init__(self)
         Commands.__init__(self)
+        Teorias.__init__(self)
         
     def help(self,user_id):
         self.print_command_list(self.HELP_MENU, user_id)
@@ -32,8 +34,8 @@ class Bot(Commands, Users):
         msg += '------------------------------------ \n'
         self.BOT.sendMessage(user_id,msg)
 
-    def teoria_introducao(user_id):
-        self.BOT.sendMessage(user_id,'teoria introdução')
+    def teoria_introducao(self, user_id):
+        self.handle_and_send_messages(user_id, self.messages_teoria_introducao)
     
     def teoria_instrucao(self,user_id):
         self.BOT.sendMessage(user_id,'teoria instrução')
@@ -49,3 +51,10 @@ class Bot(Commands, Users):
 
     def quizz_assembly(self, user_id):
         self.BOT.sendMessage(user_id,'quizz assembly')
+
+    def handle_and_send_messages(self, user_id, messages):
+        for message in messages:
+            if message['type'] == 'text':
+                self.BOT.sendMessage(user_id,message['content'])
+            elif message['type'] == 'img':
+                self.BOT.sendPhoto(user_id, message['content'])
