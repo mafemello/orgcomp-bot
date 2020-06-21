@@ -1,5 +1,19 @@
 # orgcomp-bot
 
+## Organização dos arquivos:
+- bot_server.py
+  - Inicializa o servidor e instancia Bot().
+  - Escuta mensagens, verifica se elas são comandos e fazem com que Bot() as executem se forem.
+- bot.py
+  - Define a classe do Bot(), que herda a classe Commands() e Users()
+  - Bot() executa as funções lidadas por Commands()
+- commands.py
+  - Guarda os dicionários de relação 'comando':'função' para despoluir Bot()
+  - Guarda MENU, o dicionário com todos os comandos
+    - MENU é a junção de HELP_MENU, TEORIA_MENU e QUIZZ_MENU
+- users.py
+  - Cria um banco de usuários na Stack, evitando que as respostas do quizz de um usuário interfiram no do outro
+  - É dinâmico: Se o servidor morrer, as informações são perdidas.
 ## Instruções: 
 
 ### Primeira Instalação:
@@ -12,7 +26,7 @@ pip install -r requirements.txt         # Instala dependencias na venv
 ### Rodar o programa
 Após entrar na venv:
 ```
-python bot.py
+python bot_server.py
 ```
 ### Se precisar entrar / sair da venv:
 ```
