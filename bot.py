@@ -38,14 +38,20 @@ class Bot(Commands, Users, Teorias):
         self.handle_and_send_messages(user_id, self.messages_teoria_introducao)
     
     def teoria_instrucao(self,user_id):
-        self.BOT.sendMessage(user_id,'teoria instrução')
+        self.handle_and_send_messages(user_id, self.messages_teoria_instrucao)
 
     def teoria_assembly(self,user_id):
-        self.BOT.sendMessage(user_id,'teoria assembly')
+        self.handle_and_send_messages(user_id, self.messages_teoria_assembly)
     
     def quizz_introducao(self, user_id):
-        self.BOT.sendMessage(user_id,'quizz introdução')
-    
+        user = self.all_users[f'{user_id}']
+        current_quizz = user['current_quizz']
+
+        if current_quizz is not None:
+            on_quizz_error_msg = 'Você já está em um Quizz! Se deseja encerrá-lo, digite /endquizz'
+            self.BOT.sendMessage(user_id, on_quizz_error_msg)
+        
+    #TODO: terminar quizzes
     def quizz_instrucao(self, user_id):
         self.BOT.sendMessage(user_id,'quizz instrução')
 

@@ -8,6 +8,7 @@ class Users():
             self.all_users.update(
                     {
                         f'{user_id}':{
+                            'current_quizz': None,
                             'id': user_id,
                             'acertos_quizz_assembly': 0,
                             'acertos_quizz_datapass': 0,

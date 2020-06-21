@@ -11,7 +11,7 @@ def handle_msg(msg):
     content_type, chat_type, user_id = telepot.glance(msg)
     comando = msg['text']
     if comando in bot.MENU:
-        print(bot.MENU[comando]['method'](user_id))
+        bot.MENU[comando]['method'](user_id)
 
 bot.BOT.message_loop(handle_msg)
 

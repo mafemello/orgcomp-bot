@@ -26,15 +26,15 @@ class Commands():
         self.TEORIA_MENU = {
             '/teoria_introducao': {
                     'method': self.teoria_introducao,
-                    'description': 'Inicia o quizz de introdução'
+                    'description': 'Aprenda a matéria introdutória'
                 },
             '/teoria_ciclo_instrucao': {
                     'method': self.teoria_instrucao,
-                    'description': 'Inicia o quizz sobre ciclos de instrução'
+                    'description': 'Aprenda sobre ciclos de instrução'
                 },
             '/teoria_assembly': {
                     'method': self.teoria_assembly,
-                    'description': 'Inicia o quizz sobre assembly'
+                    'description': 'Aprenda sobre assembly'
                 }
         }
 
