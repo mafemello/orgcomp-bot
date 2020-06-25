@@ -10,6 +10,7 @@ class Users():
                         f'{user_id}':{
                             'current_quizz': None,
                             'id': user_id,
+                            'quizz_state': 0,
                             'acertos_quizz_assembly': 0,
                             'acertos_quizz_datapass': 0,
                             'acertos_quizz_cache': 0,
