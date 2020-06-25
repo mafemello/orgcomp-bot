@@ -7,8 +7,8 @@ class Bot(Commands, Users, Teorias):
     def __init__(self, bot_key):
         self.BOT = telepot.Bot(bot_key)
         Users.__init__(self)
-        Commands.__init__(self)
         Teorias.__init__(self)
+        Commands.__init__(self)
         
     def help(self,user_id):
         self.print_command_list(self.HELP_MENU, user_id)
@@ -72,9 +72,10 @@ class Bot(Commands, Users, Teorias):
             start_quizz_msg = f'bem vindo ao quizz {new_quizz}!'
             self.BOT.sendMessage(user_id, start_quizz_msg)
 
-        def answer_quizz(self, choice):
+        def answer_quizz(self, choice, user_id):
             user = self.all_users[f'{user_id}']
             current_quizz = user['current_quizz']
+            pass
 
             # TODO
             # criar uma variavel de current_quizz_question
