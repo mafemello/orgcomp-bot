@@ -54,20 +54,18 @@ class Bot(Commands, Users, Teorias, Quizzes):
                 self.BOT.sendPhoto(user_id, message['content'])
 
     def start_quizz_introducao(self, user_id):
-        quizz = self.QUIZZES.get('quizz_introducao')
-        self.start_quizz(user_id, quizz)
+        self.start_quizz(user_id, 'quizz_introducao')
     
     def start_quizz_instrucao(self, user_id):
-        quizz = self.QUIZZES.get('quizz_instrucao')
-        self.start_quizz(user_id, quizz)
+        self.start_quizz(user_id, 'quizz_instrucao')
     
     def start_quizz_assembly(self, user_id):
         self.start_quizz(user_id, 'quizz_assembly')
 
     def start_quizz(self, user_id, new_quizz):
         quizz = self.QUIZZES.get(f'{new_quizz}')
-        print(quizz)
         user = self.all_users.get(f'{user_id}')
+
         if not user:
             no_user_error_msg = (
                 'Você ainda não está cadastrado(a)! Utilize o comando /start para se cadastrar e poder utilizar o quizz.'
@@ -81,7 +79,7 @@ class Bot(Commands, Users, Teorias, Quizzes):
             self.BOT.sendMessage(user_id, on_quizz_error_msg)
 
         else:
-            user['current_user_quizz'] = new_quizz.keys()
+            user['current_user_quizz'] = new_quizz
             start_quizz_msg = f'bem vindo ao {new_quizz}!'
             self.BOT.sendMessage(user_id, start_quizz_msg)
 
