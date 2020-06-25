@@ -53,6 +53,33 @@ class Commands():
                 }
         }
 
+        self.ANSWER_QUIZZ_MENU = {
+            '/a': {
+                    'method': self.answer_quizz,
+                    'description': 'Responde o quizz atual com a'
+                },
+            '/b': {
+                    'method': self.answer_quizz,
+                    'description': 'Responde o quizz atual com b'
+                },
+            '/c': {
+                    'method': self.answer_quizz,
+                    'description': 'Responde o quizz atual com c'
+                },
+            '/d': {
+                    'method': self.answer_quizz,
+                    'description': 'Responde o quizz atual com d'
+                },
+            '/v': {
+                    'method': self.answer_quizz,
+                    'description': 'Responde o quizz atual com d'
+                },
+            '/f': {
+                    'method': self.answer_quizz,
+                    'description': 'Responde o quizz atual com d'
+                },
+        }
+        
         self.MENU = self.HELP_MENU.copy()
         self.MENU.update(self.TEORIA_MENU)
         self.MENU.update(self.QUIZZ_MENU)
