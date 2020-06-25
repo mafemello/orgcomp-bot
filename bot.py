@@ -62,10 +62,11 @@ class Bot(Commands, Users, Teorias, Quizzes):
         self.start_quizz(user_id, quizz)
     
     def start_quizz_assembly(self, user_id):
-        quizz = self.QUIZZES.get('quizz_assembly')
-        self.start_quizz(user_id, quizz)
+        self.start_quizz(user_id, 'quizz_assembly')
 
     def start_quizz(self, user_id, new_quizz):
+        quizz = self.QUIZZES.get('f{new_quizz}')
+        print(quizz)
         user = self.all_users.get(f'{user_id}')
         if not user:
             no_user_error_msg = (
